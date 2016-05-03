@@ -41,7 +41,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     
     float col = trace(origin, ray);
     
-    col = 1.0 / col; // Intensity increases inversely proportionate to the square of how far the shape is away
+    col = 1.0 / col*col; // Intensity increases inversely proportionate to the square of how far the shape is away
     
     fragColor = vec4(col, col * 2.0, col, 1.0);
 }
