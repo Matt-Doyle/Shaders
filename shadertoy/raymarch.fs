@@ -7,7 +7,7 @@ float map(vec3 p) {
 	return sdSphere(p, 0.4);
 }
 
-float trace(vec3 o, vec3 r) {
+float trace(vec3 o, vec3 r) { // Traces a ray from origin o in direction r
     float t = 0.0;
     for (int i = 0; i < 64; i++) {
     	vec3 p = o + r * t;
@@ -18,7 +18,7 @@ float trace(vec3 o, vec3 r) {
 }
 
 
-mat2 calculateRotationMatrix(float angle) {
+mat2 calculateRotationMatrix(float angle) { // Calculates a basic rotation matrix
     return mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
 }
 
@@ -41,7 +41,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     
     float col = trace(origin, ray);
     
-    col = 1.0 / col;
+    col = 1.0 / col; // Intensity increases inversely proportionate to the square of how far the shape is away
     
     fragColor = vec4(col, col * 2.0, col, 1.0);
 }
